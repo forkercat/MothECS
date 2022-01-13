@@ -1,4 +1,4 @@
-# MothECS: Simple Bitwise-Based Entity Component System in Swift 📦
+# MothECS: Simple Entity Component System in Swift 📦
 
 [![macOS](https://github.com/forkercat/MothECS/actions/workflows/ci-macos.yml/badge.svg)](https://github.com/forkercat/MothECS/actions/workflows/ci-macos.yml)
 [![Linux](https://github.com/forkercat/MothECS/actions/workflows/ci-linux.yml/badge.svg)](https://github.com/forkercat/MothECS/actions/workflows/ci-linux.yml)
