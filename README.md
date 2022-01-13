@@ -20,6 +20,12 @@ Future Development:
 - Support more components (currently it supports 32)
 - Use sparse array
 
+[Moth](https://www.pinterest.com/pin/587649451369676935/) in MothECS - It refers to new players in [Sky](https://www.thatskygame.com/). Explanation is [here](https://www.reddit.com/r/SkyGame/comments/q03tj4/why_are_new_players_called_moths/)!
+
+<p align="left">
+	<img src="https://64.media.tumblr.com/b84d16532adb0a618782d987255d8be2/3de7a74e664a6d26-79/s500x750/61bfbf123cbbfc2ec0b331dcea58d9f05c03bd88.jpg" width="30%" alt="This is moth!"/>
+</p>
+
 ## 🔧 Install
 
 You package file would be like:
