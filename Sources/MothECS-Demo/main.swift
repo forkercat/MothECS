@@ -30,6 +30,8 @@ let e4: MothEntityID = moth.createEntity()
 
 assert(e0 != .invalid)
 
+print(moth.entityIDs)
+
 // Create Component
 moth.createComponent(TagComponent.self, to: e0)
 moth.createComponent(TransformComponent.self, to: e0)

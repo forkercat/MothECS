@@ -28,6 +28,10 @@ public class Moth {
 
 // MARK: - Entity Methods
 extension Moth {
+    public var entityIDs: [MothEntityID] {
+        entities.filter{ $0.entityID != .invalid }.map { $0.entityID }
+    }
+    
     public func createEntity() -> MothEntityID {
         guard entities.count < Self.maxEntityCount else {
             assertionFailure("Cannot create entity any more. Reached the limit: \(Self.maxEntityCount)")
@@ -133,14 +137,14 @@ extension Moth {
     public func view<T>(_ type: T.Type) -> [MothEntityID] where T: MothComponent {
         let componentID = componentPool.getComponentID(type)
         let mask = MothComponentMask(indices: [componentID])
-        return entities.filter({ $0.componentMask.contains(mask) }).map({ $0.entityID })
+        return entities.filter{ $0.componentMask.contains(mask) }.map{ $0.entityID }
     }
     
     public func view<T1, T2>(_ type1: T1.Type, _ type2: T2.Type) -> [MothEntityID] where T1: MothComponent, T2: MothComponent {
         let componentID1 = componentPool.getComponentID(type1)
         let componentID2 = componentPool.getComponentID(type2)
         let mask = MothComponentMask(indices: [componentID1, componentID2])
-        return entities.filter({ $0.componentMask.contains(mask) }).map({ $0.entityID })
+        return entities.filter{ $0.componentMask.contains(mask) }.map{ $0.entityID }
     }
     
     public func view<T1, T2, T3>(_ type1: T1.Type, _ type2: T2.Type, _ type3: T3.Type)
@@ -149,14 +153,14 @@ extension Moth {
         let componentID2 = componentPool.getComponentID(type2)
         let componentID3 = componentPool.getComponentID(type3)
         let mask = MothComponentMask(indices: [componentID1, componentID2, componentID3])
-        return entities.filter({ $0.componentMask.contains(mask) }).map({ $0.entityID })
+        return entities.filter{ $0.componentMask.contains(mask) }.map{ $0.entityID }
     }
     
     // With Exceptions
     public func view<T>(excepts type: T.Type) -> [MothEntityID] where T: MothComponent {
         let componentID = componentPool.getComponentID(type)
         let mask = MothComponentMask(indices: [componentID])
-        return entities.filter({ !$0.componentMask.contains(mask) }).map({ $0.entityID })
+        return entities.filter{ !$0.componentMask.contains(mask) }.map{ $0.entityID }
     }
     
     public func view<T1, T2>(_ type: T1.Type, excepts exceptType: T2.Type) -> [MothEntityID] where T1: MothComponent, T2: MothComponent {
@@ -164,7 +168,7 @@ extension Moth {
         let exceptComponentID = componentPool.getComponentID(exceptType)
         let mask = MothComponentMask(indices: [componentID])
         let exceptMask = MothComponentMask(indices: [exceptComponentID])
-        return entities.filter({ $0.componentMask.contains(mask) && !$0.componentMask.contains(exceptMask) }).map({ $0.entityID })
+        return entities.filter{ $0.componentMask.contains(mask) && !$0.componentMask.contains(exceptMask) }.map{ $0.entityID }
     }
     
     public func view<T1, T2, T3>(_ type1: T1.Type, _ type2: T2.Type, excepts exceptType: T3.Type)
@@ -174,7 +178,7 @@ extension Moth {
         let exceptComponentID = componentPool.getComponentID(exceptType)
         let mask = MothComponentMask(indices: [componentID1, componentID2])
         let exceptMask = MothComponentMask(indices: [exceptComponentID])
-        return entities.filter({ $0.componentMask.contains(mask) && !$0.componentMask.contains(exceptMask) }).map({ $0.entityID })
+        return entities.filter{ $0.componentMask.contains(mask) && !$0.componentMask.contains(exceptMask) }.map{ $0.entityID }
     }
     
     public func list<T>(_ type: T.Type) -> [T] where T: MothComponent {  // might be slow, use view()

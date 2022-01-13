@@ -85,9 +85,10 @@ let e1: MothEntityID = moth.createEntity()
 let e2: MothEntityID = moth.createEntity()
 let e4: MothEntityID = moth.createEntity()
 assert(e0 != .invalid)
+_ = moth.entityIDs  // return all valid entity IDs
 ```
 
-#### Create/Assign Comonent
+#### Create & Assign Comonent
 
 ```swift
 moth.createComponent(TagComponent.self, to: e0)
