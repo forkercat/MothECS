@@ -45,8 +45,6 @@ class MothComponentPool {
     }
     
     func getComponent<T>(_ type: T.Type, from entityID: MothEntityID) -> T where T: MothComponent {
-        let id = getComponentID(type)
-        let pool = typePools[Int(id)]
         guard let component: T = typePools[Int(getComponentID(type))][Int(entityID)] as? T else {
             fatalError("Please use hasComponent() to check component existence before calling getComponent()")
         }

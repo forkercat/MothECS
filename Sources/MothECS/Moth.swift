@@ -83,6 +83,8 @@ extension Moth {
         
         let componentID = componentPool.getComponentID(T.self)
         entities[Int(entityID)].componentMask.set(componentID)
+        
+        componentPool.assignComponent(component, to: T.self, from: entityID)
         return true
     }
     
@@ -106,6 +108,7 @@ extension Moth {
         componentPool.removeAllComponents(from: entityID)
     }
     
+    @discardableResult
     public func getComponent<T>(_ type: T.Type, from entityID: MothEntityID) -> T where T: MothComponent {
         guard checkEntityID(entityID) else {
             fatalError("Cannot get component from invalid entity ID (\(entityID)")
@@ -113,7 +116,8 @@ extension Moth {
         
         return componentPool.getComponent(type, from: entityID)
     }
-    
+
+    @discardableResult
     public func hasComponent<T>(_ type: T.Type, in entityID: MothEntityID) -> Bool where T: MothComponent {
         guard checkEntityID(entityID) else {
             return false
